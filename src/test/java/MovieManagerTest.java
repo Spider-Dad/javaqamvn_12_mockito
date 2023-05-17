@@ -23,12 +23,10 @@ public class MovieManagerTest {
         manager.add(movie2);
         manager.add(movie3);
 
-        Movie[] movies = manager.findAll();
+        Movie[] expectedMovies = {movie1, movie2, movie3};
+        Movie[] actualMovies = manager.findAll();
 
-        Assertions.assertEquals(3, movies.length);
-        Assertions.assertEquals(movie1, movies[0]);
-        Assertions.assertEquals(movie2, movies[1]);
-        Assertions.assertEquals(movie3, movies[2]);
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
@@ -43,12 +41,10 @@ public class MovieManagerTest {
         manager.add(movie3);
         manager.add(movie4);
 
-        Movie[] movies = manager.findLast();
+        Movie[] expectedMovies = {movie4, movie3, movie2};
+        Movie[] actualMovies = manager.findLast();
 
-        Assertions.assertEquals(3, movies.length);
-        Assertions.assertEquals(movie4, movies[0]);
-        Assertions.assertEquals(movie3, movies[1]);
-        Assertions.assertEquals(movie2, movies[2]);
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
@@ -62,27 +58,32 @@ public class MovieManagerTest {
         manager.add(movie2);
         manager.add(movie3);
 
-        Movie[] movies = manager.findAll();
+        Movie[] expectedMovies = {movie2, movie3};
+        Movie[] actualMovies = manager.findAll();
 
-        Assertions.assertEquals(2, movies.length);
-        Assertions.assertEquals(movie2, movies[0]);
-        Assertions.assertEquals(movie3, movies[1]);
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
     public void testFindAllEmpty() {
         // Тестирование метода при пустом списке фильмов. Ожидается, что метод вернет пустой массив.
         manager = new MovieManager(3);
-        Movie[] movies = manager.findAll();
-        Assertions.assertEquals(0, movies.length);
+
+        Movie[] expectedMovies = {};
+        Movie[] actualMovies = manager.findAll();
+
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
     public void testFindLastEmpty() {
         // Тестирование метода  при пустом списке фильмов. Ожидается, что метод вернет пустой массив.
         manager = new MovieManager(3);
-        Movie[] movies = manager.findLast();
-        Assertions.assertEquals(0, movies.length);
+
+        Movie[] expectedMovies = {};
+        Movie[] actualMovies = manager.findLast();
+
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
@@ -94,11 +95,10 @@ public class MovieManagerTest {
         manager.add(movie1);
         manager.add(movie2);
 
-        Movie[] movies = manager.findLast();
+        Movie[] expectedMovies = {movie2, movie1};
+        Movie[] actualMovies = manager.findLast();
 
-        Assertions.assertEquals(2, movies.length);
-        Assertions.assertEquals(movie2, movies[0]);
-        Assertions.assertEquals(movie1, movies[1]);
+        Assertions.assertArrayEquals(expectedMovies, actualMovies);
     }
 
     @Test
